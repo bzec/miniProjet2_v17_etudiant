@@ -47,7 +47,14 @@ class CommandeController implements ControllerProviderInterface
 
         $this->commandeModel = new CommandeModel($app);
         $donnees=$this->commandeModel->getCommandeClient($iduser);
-        return $app["twig"]->render('frontOff/Commande/showCommandeClient.html.twig',['data'=>$donnees]);
+
+        $total=0;
+        foreach ($donnees as $value){
+            $total+=$value['prix'];
+        }
+
+
+       return $app["twig"]->render('frontOff/Commande/showCommandeClient.html.twig',['data'=>$donnees , 'prixtotal'=>$total]);
 
     }
 
@@ -72,6 +79,7 @@ class CommandeController implements ControllerProviderInterface
 
         $this->commandeModel = new CommandeModel($app);
         $donnees=$this->commandeModel->getAllCommande();
+
         return $app["twig"]->render('backOff/Commande/showCommandeVendeur.html.twig',['data'=>$donnees]);
 
     }

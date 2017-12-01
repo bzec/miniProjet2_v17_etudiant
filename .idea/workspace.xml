@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PanierController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+      <file leaf-file-name="showCommandeClient.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeClient.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="42" column="44" lean-forward="false" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+            <state relative-caret-position="609">
+              <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -26,11 +26,21 @@
       <file leaf-file-name="CommandeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="84" column="53" lean-forward="false" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+            <state relative-caret-position="424">
+              <caret line="56" column="123" lean-forward="false" selection-start-line="56" selection-start-column="123" selection-end-line="56" selection-end-column="123" />
               <folding>
                 <element signature="e#34#56#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1092">
+              <caret line="57" column="59" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -69,7 +79,6 @@
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig" />
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/deleteProduit.html.twig" />
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/editProduit.html.twig" />
-        <option value="$PROJECT_DIR$/src/View/login.html.twig" />
         <option value="$PROJECT_DIR$/src/View/frontOff/validFormPanier.html.twig" />
         <option value="$PROJECT_DIR$/src/View/backOff/Produit/showProduits.html.twig" />
         <option value="$PROJECT_DIR$/src/View/frontOff/deletePanierClient.html.twig" />
@@ -99,8 +108,10 @@
         <option value="$PROJECT_DIR$/src/View/frontOff/showProduitsClient.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/ProduitModel.php" />
         <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/CommandeController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PanierController.php" />
+        <option value="$PROJECT_DIR$/src/View/login.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/CommandeController.php" />
+        <option value="$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeClient.html.twig" />
       </list>
     </option>
   </component>
@@ -208,27 +219,6 @@
               <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Commande" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Panier" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Produit" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="composer.phar" type="f7f5664e:PsiPharFileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -308,7 +298,7 @@
       <workItem from="1512131438339" duration="1511000" />
       <workItem from="1512132979192" duration="39000" />
       <workItem from="1512151072515" duration="1523000" />
-      <workItem from="1512155820882" duration="11480000" />
+      <workItem from="1512155820882" duration="12427000" />
     </task>
     <task id="LOCAL-00001" summary="cyka">
       <created>1512132735091</created>
@@ -321,7 +311,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95111000" />
+    <option name="totallyTimeSpent" value="96058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -418,13 +408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -604,14 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeClient.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="21" column="45" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/frontOff/monProfil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="651">
@@ -625,24 +600,6 @@
         <state relative-caret-position="319">
           <caret line="29" column="63" lean-forward="false" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="57" column="59" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/UserModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
-          <folding>
-            <marker date="1512164689642" expanded="true" signature="273:357" ph="SELECT id,us... users" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,14 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="903">
           <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/S3projet2_v17.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -702,20 +651,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="127" column="25" lean-forward="false" selection-start-line="127" selection-start-column="22" selection-end-line="127" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/UserModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="35" column="11" lean-forward="false" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+          <folding>
+            <marker date="1512164689642" expanded="true" signature="273:357" ph="SELECT id,us... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/S3projet2_v17.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="86" column="29" lean-forward="true" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="57" column="59" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="57" lean-forward="false" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="84" column="53" lean-forward="false" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+        <state relative-caret-position="424">
+          <caret line="56" column="123" lean-forward="false" selection-start-line="56" selection-start-column="123" selection-end-line="56" selection-end-column="123" />
           <folding>
             <element signature="e#34#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="42" column="44" lean-forward="false" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        <state relative-caret-position="609">
+          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
           <folding />
         </state>
       </provider>
