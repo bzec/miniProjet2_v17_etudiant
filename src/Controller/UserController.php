@@ -54,7 +54,10 @@ class UserController implements ControllerProviderInterface {
 
     public function showProfil(Application $app)
     {
-       
+        $this->userModel = new UserModel($app);
+        $donnees=$this->userModel->getUser($this->userModel->recupererId($app));
+        print_r($donnees);
+        return $app["twig"]->render('frontOff/monProfil.html.twig',['data'=>$donnees]);
     }
 
 

@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+
+    <div class="row">
+        <div class="col-lg-5">
+
+            <h4>Mon profil</h4>
+            {% for user in data if data is not empty %}
+
+                <div class="col-lg-15">
+                    {% if user.username is defined %}
+                    <caption> {{user.username}} </caption>
+                        {% endif %}
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            {% if user.nom is defined %}
+                            <td>nom : {{ user.nom }}</td>
+                                {% endif %}
+
+                            {% if user.code_postal is defined %}
+                                <td>code postal : {{ user.code_postal }}</td>
+                            {% endif %}
+                            {% if user.ville is defined %}
+                                <td>Ville : {{ user.ville }}</td>
+                            {% endif %}
+                            {% if user.adresse is defined %}
+                                <td>adresse: {{ user.adresse }}</td>
+                            {% endif %}
+                            {% if user.email is defined %}
+                            <td>email :{{ user.email }}</td>
+                            {% endif %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div >
+
+    </div>
+{%endblock%}

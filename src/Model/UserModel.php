@@ -33,13 +33,13 @@ class UserModel {
         return $app['session']->get('user_id');
     }
 
-	public function getUser($user_id) {
+	public function getuser($user_id) {
 		$queryBuilder = new QueryBuilder($this->db);
 		$queryBuilder
-			->select('*')
+			->select('id,username,email,nom,code_postal ,ville,adresse')
 			->from('users')
-			->where('id = :idUser')
-			->setParameter('idUser', $user_id);
+			->where('id ='.$user_id.';');
+		echo $queryBuilder;
 		return $queryBuilder->execute()->fetch();
 
 	}
