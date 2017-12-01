@@ -137,7 +137,7 @@ INSERT INTO paniers (id,quantite,prix,dateAjoutPanier,user_id,produit_id,command
    prix float(6,2) NOT NULL,
    dateAjoutPanier timestamp default CURRENT_TIMESTAMP,
    user_id int(11)  UNSIGNED  NOT NULL,
-   produit_id int(11) NOT NULL,
+   produit_id int(11) UNSIGNED NOT NULL,
    commande_id int(11) DEFAULT NULL,
    PRIMARY KEY (id),
    CONSTRAINT fk_archivepaniers_users FOREIGN KEY (user_id) REFERENCES users (id),
