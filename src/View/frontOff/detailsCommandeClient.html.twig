@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+
+<div class="container">
+
+    {% for panier in data if data is not empty %}
+        <div class="row">
+            <div class="col-lg-6">
+                <caption>{{panier.nom}}</caption>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{panier.photo}}" >
+                        </td>
+                        <td>
+                            prix :{{ panier.prix }} <br>
+                            Quantite :{{ panier.quantite }} <br>
+                            Date d'ajout : {{ panier.dateAjoutPanier|date('d/m/Y')}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+{% endfor %}
+    
+    <div class="col-md-6 mb-3">
+        <a class="btn btn-success " href="{{path('CommandeClient.show')}}">retour</a>
+    </div>
+       
+</div>
+{% endblock %}

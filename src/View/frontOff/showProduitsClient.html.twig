@@ -24,7 +24,7 @@
                </div>
            {% endfor %}
     </div >
-
+        {% if panier is not empty %}
     <div class="col-lg-5">
         <h4>Panier</h4>
         {% for panier in panier if panier is not empty %}
@@ -48,6 +48,6 @@
             </div>
         {% endfor %}
     </div>
-
+{% endif %}
     </div>
     {%endblock%}

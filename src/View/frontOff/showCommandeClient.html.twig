@@ -1,25 +1,32 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
     <div class="col-md-6 mb-2"></div>
+
+    {% if data is empty %}
+    <h1>veuillez valider votre panier pour passer votre commande</h1>
+    {% endif %}
+    {%  if data is not empty %}
     <table class="table table-striped">
         <thead class="thead-inverse">
-        <tr><th>id</th><th>prix</th><th>date_achat</th><th>etat</th>
+
+        <tr><th>id</th><th>prix</th><th>date_achat</th><th>etat</th><th>operation</th>
 
         </tr>
         </thead>
         <tbody>
+
         {% for commande in data if data is not empty %}
 
             <tr>
-                <td>{{commande.id}}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
-                    {{commande.libelle}}</td><td>
-                  </td>
-                <td> <a href="{{path('CommandeClient.details',{id:commande.id}) }}">détails sur la commande </a></td>
+                <td>{{commande.id}}</td><td>{{commande.prix}}</td><td>{{commande.date_achat|date("m/d/Y")}}</td><td>
+                    {{commande.libelle}}</td>
+                <td> <a href="{{path('CommandeClient.details',{id: commande.id}) }}">détails sur la commande </a></td>
             </tr>
 
         {% endfor %}
         </tbody>
     </table>
+        {% endif %}
     </div>
 
 

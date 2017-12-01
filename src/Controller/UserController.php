@@ -52,14 +52,20 @@ class UserController implements ControllerProviderInterface {
 		return $app->redirect($app["url_generator"]->generate("accueil"));
 	}
 
+    public function showProfil(Application $app)
+    {
+       
+    }
 
 
-	public function connect(Application $app) {
+
+    public function connect(Application $app) {
 		$controllers = $app['controllers_factory'];
 		$controllers->match('/', 'App\Controller\UserController::index')->bind('user.index');
 		$controllers->get('/login', 'App\Controller\UserController::connexionUser')->bind('user.login');
 		$controllers->post('/login', 'App\Controller\UserController::validFormConnexionUser')->bind('user.validFormlogin');
 		$controllers->get('/logout', 'App\Controller\UserController::deconnexionSession')->bind('user.logout');
+        $controllers->get('/profil', 'App\Controller\UserController::showProfil')->bind('user.profil');
 		return $controllers;
 	}
 }

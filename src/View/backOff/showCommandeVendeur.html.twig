@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <div class="col-md-6 mb-2"></div>
+    {% if data is empty %}
+    <h1>aucune commande prevue</h1>
+    {% endif %}
+    {%  if data is not empty %}
+    <table class="table table-striped">
+        <thead class="thead-inverse">
+        <tr><th>id</th><th>username</th><th>prix</th><th>date_achat</th><th>etat</th><th>opération</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for commande in data if data is not empty %}
+            <tr>
+                <td>{{commande.id}}</td><td>{{ commande.username }}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
+                    {{commande.libelle}}</td>
+                <td> <a href="{{path('CommandeVendeur.details',{id:commande.id}) }}">détails sur la commande </a> <br>
+                    <a href="{{ path('CommandeVendeur.annuler',{idcom:commande.id})}}">annuler commande </a> <br>
+                    {% if commande.etat_id !=2  %}
+                    <a href="{{ path('CommandeVendeur.expedier',{idcom:commande.id})}}">expédier commande </a>
+                    {% endif %}
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+        {%  endif %}
+    </div>
+
+
+
+{% endblock %}
