@@ -47,7 +47,7 @@ class CommandeController implements ControllerProviderInterface
 
         $this->commandeModel = new CommandeModel($app);
         $donnees=$this->commandeModel->getCommandeClient($iduser);
-        return $app["twig"]->render('frontOff/showCommandeClient.html.twig',['data'=>$donnees]);
+        return $app["twig"]->render('frontOff/Commande/showCommandeClient.html.twig',['data'=>$donnees]);
 
     }
 
@@ -63,7 +63,7 @@ class CommandeController implements ControllerProviderInterface
         $donnees=$this->archivepanierModel->readPanierCommande($iduser,$id);
 
 
-        return $app["twig"]->render('frontOff/detailsCommandeClient.html.twig',['data'=>$donnees]);
+        return $app["twig"]->render('frontOff/Commande/detailsCommandeClient.html.twig',['data'=>$donnees]);
     }
 
     public function showCommandeVendeur (Application $app){
@@ -72,7 +72,7 @@ class CommandeController implements ControllerProviderInterface
 
         $this->commandeModel = new CommandeModel($app);
         $donnees=$this->commandeModel->getAllCommande();
-        return $app["twig"]->render('backOff/showCommandeVendeur.html.twig',['data'=>$donnees]);
+        return $app["twig"]->render('backOff/Commande/showCommandeVendeur.html.twig',['data'=>$donnees]);
 
     }
 
@@ -82,7 +82,7 @@ class CommandeController implements ControllerProviderInterface
         $donnees=$this->archivepanierModel->readPanierCommandeVendeur($id);
         //print_r($donnees);
         //die();
-        return $app["twig"]->render('backOff/detailsCommandeVendeur.html.twig',['data'=>$donnees]);
+        return $app["twig"]->render('backOff/Commande/detailsCommandeVendeur.html.twig',['data'=>$donnees]);
     }
 
     public function updateEtat(Application $app,$idcom){

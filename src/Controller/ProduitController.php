@@ -42,7 +42,7 @@ class ProduitController implements ControllerProviderInterface
         $this->userModel=new UserModel($app);
         $id=$this->userModel->recupererId($app);
         $panier = $this->panierModel->readUnPanier($id);
-        return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+        return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
     }
 
 
@@ -182,7 +182,7 @@ class ProduitController implements ControllerProviderInterface
             $this->userModel=new UserModel($app);
             $id=$this->userModel->recupererId($app);
             $panier = $this->panierModel->readUnPanier($id);
-            return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+            return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
 
         }
         else
@@ -195,7 +195,7 @@ class ProduitController implements ControllerProviderInterface
             $this->userModel=new UserModel($app);
             $id=$this->userModel->recupererId($app);
             $panier = $this->panierModel->readUnPanier($id);
-            return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['donnees'=>$donnees,'data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+            return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['donnees'=>$donnees,'data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
         }
     }
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers

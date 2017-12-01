@@ -32,7 +32,7 @@ class PanierController implements ControllerProviderInterface
         $this->userModel=new UserModel($app);
         $id=$this->userModel->recupererId($app);
         $panier = $this->panierModel->readUnPanier($id);
-        return $app["twig"]->render('frontOff/showPanierClient.html.twig',['data'=>$panier]);
+        return $app["twig"]->render('frontOff/Panier/showPanierClient.html.twig',['data'=>$panier]);
     }
 
     public function addPanierClient(Application $app,$idProduit){
@@ -40,7 +40,7 @@ class PanierController implements ControllerProviderInterface
     $this->produitModel=new ProduitModel($app);
     $data= $this->produitModel->getProduit($idProduit);
 
-    return $app["twig"]->render('frontOff/addPanierClient.html.twig',['data'=>$data]);
+    return $app["twig"]->render('frontOff/Panier/addPanierClient.html.twig',['data'=>$data]);
     }
 
 
@@ -86,7 +86,7 @@ class PanierController implements ControllerProviderInterface
             }
         }else { 
          
-            return $app["twig"]->render('frontOff/addPanierClient.html.twig',['donnees'=>$donnees,'data'=>$data,'erreurs'=>$erreurs]);
+            return $app["twig"]->render('frontOff/Panier/addPanierClient.html.twig',['donnees'=>$donnees,'data'=>$data,'erreurs'=>$erreurs]);
         }
     }
         else{
@@ -102,7 +102,7 @@ class PanierController implements ControllerProviderInterface
         $panier = $this->panierModel->readUnPanierSuppr($id);
 
 
-        return $app["twig"]->render('frontOff/deletePanierClient.html.twig',['panier'=>$panier]);
+        return $app["twig"]->render('frontOff/Panier/deletePanierClient.html.twig',['panier'=>$panier]);
     }
 
     public function validFormDeletePanier(Application $app, Request $req) {

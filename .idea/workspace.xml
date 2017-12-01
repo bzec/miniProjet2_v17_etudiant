@@ -13,52 +13,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="showProduitsClient.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/frontOff/showProduitsClient.html.twig">
+      <file leaf-file-name="PanierController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="44" />
+            <state relative-caret-position="263">
+              <caret line="42" column="44" lean-forward="false" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProduitModel.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Model/ProduitModel.php">
+      <file leaf-file-name="CommandeController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="23" column="98" lean-forward="false" selection-start-line="23" selection-start-column="98" selection-end-line="23" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProduitController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="167" column="50" lean-forward="false" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="S3projet2_v17.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/S3projet2_v17.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addProduit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="61" column="14" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="61" selection-end-column="14" />
-              <folding />
+            <state relative-caret-position="4">
+              <caret line="84" column="53" lean-forward="false" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+              <folding>
+                <element signature="e#34#56#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,10 +85,8 @@
         <option value="$PROJECT_DIR$/src/Model/PanierModel.php" />
         <option value="$PROJECT_DIR$/src/Model/ArchivePanierModel" />
         <option value="$PROJECT_DIR$/S3projet2_v17.sql" />
-        <option value="$PROJECT_DIR$/src/Controller/PanierController.php" />
         <option value="$PROJECT_DIR$/src/View/nav_backOff.html.twig" />
         <option value="$PROJECT_DIR$/src/View/frontOff/detailsCommandeClient.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/CommandeController.php" />
         <option value="$PROJECT_DIR$/src/Model/ArchivePanierModel.php" />
         <option value="$PROJECT_DIR$/src/View/backOff/detailsCommandeVendeur.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/CommandeModel.php" />
@@ -126,9 +96,11 @@
         <option value="$PROJECT_DIR$/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/src/Model/UserModel.php" />
         <option value="$PROJECT_DIR$/src/View/frontOff/monProfil.html.twig" />
-        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
         <option value="$PROJECT_DIR$/src/View/frontOff/showProduitsClient.html.twig" />
         <option value="$PROJECT_DIR$/src/Model/ProduitModel.php" />
+        <option value="$PROJECT_DIR$/src/Controller/ProduitController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/CommandeController.php" />
+        <option value="$PROJECT_DIR$/src/Controller/PanierController.php" />
       </list>
     </option>
   </component>
@@ -211,6 +183,14 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="backOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Commande" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="backOff" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Produit" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -219,6 +199,30 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Commande" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Panier" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="miniProjet2_v17_etudiant" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="View" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="frontOff" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Produit" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="miniProjet2_v17_etudiant" type="b2602c69:ProjectViewProjectNode" />
@@ -238,6 +242,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Logiciel\wamp64\www\web\s3_web\projet2\miniProjet2_v17_etudiant\miniProjet2_v17_etudiant\src\View\backOff\Commande" />
+      <recent name="E:\Logiciel\wamp64\www\web\s3_web\projet2\miniProjet2_v17_etudiant\miniProjet2_v17_etudiant\src\View\frontOff\Produit" />
+      <recent name="E:\Logiciel\wamp64\www\web\s3_web\projet2\miniProjet2_v17_etudiant\miniProjet2_v17_etudiant\src\View\frontOff\Commande" />
+      <recent name="E:\Logiciel\wamp64\www\web\s3_web\projet2\miniProjet2_v17_etudiant\miniProjet2_v17_etudiant\src\View\frontOff\Panier" />
       <recent name="E:\Logiciel\wamp64\www\web\s3_web\miniProjet2_v17_etudiant\miniProjet2_v17_etudiant\src\View\frontOff" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -300,7 +308,7 @@
       <workItem from="1512131438339" duration="1511000" />
       <workItem from="1512132979192" duration="39000" />
       <workItem from="1512151072515" duration="1523000" />
-      <workItem from="1512155820882" duration="11080000" />
+      <workItem from="1512155820882" duration="11480000" />
     </task>
     <task id="LOCAL-00001" summary="cyka">
       <created>1512132735091</created>
@@ -313,7 +321,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94711000" />
+    <option name="totallyTimeSpent" value="95111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1060" extended-state="6" />
@@ -406,13 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/nav_home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -448,7 +449,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/addPanierClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/addPanierClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -505,7 +506,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/deletePanierClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/deletePanierClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
@@ -521,21 +522,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/detailsCommandeClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/detailsCommandeClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="30" column="69" lean-forward="false" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
-          <folding>
-            <element signature="e#34#56#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -549,7 +540,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/showCommandeVendeur.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/Commande/showCommandeVendeur.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
@@ -567,7 +558,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/detailsCommandeVendeur.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/Commande/detailsCommandeVendeur.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
@@ -597,7 +588,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/panierClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/panierClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
@@ -613,7 +604,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/showCommandeClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Commande/showCommandeClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="21" column="45" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="14" />
@@ -626,16 +617,6 @@
         <state relative-caret-position="651">
           <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="82" column="10" lean-forward="false" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
-          <folding>
-            <element signature="e#34#56#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,7 +646,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/showPanierClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Panier/showPanierClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="634">
           <caret line="40" column="16" lean-forward="false" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
@@ -673,18 +654,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/Model/ProduitModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="61" column="14" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="61" selection-end-column="14" />
+        <state relative-caret-position="359">
+          <caret line="23" column="98" lean-forward="false" selection-start-line="23" selection-start-column="98" selection-end-line="23" selection-end-column="98" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
+    <entry file="file://$PROJECT_DIR$/src/View/frontOff/Produit/showProduitsClient.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="167" column="50" lean-forward="false" selection-start-line="167" selection-start-column="50" selection-end-line="167" selection-end-column="50" />
+        <state relative-caret-position="903">
+          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -697,18 +678,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/frontOff/showProduitsClient.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/View/backOff/Produit/addProduit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" column="44" lean-forward="false" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="44" />
+        <state relative-caret-position="592">
+          <caret line="61" column="14" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="61" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/ProduitModel.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="23" column="98" lean-forward="false" selection-start-line="23" selection-start-column="98" selection-end-line="23" selection-end-column="98" />
+        <state relative-caret-position="21">
+          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/ProduitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1806">
+          <caret line="197" column="57" lean-forward="false" selection-start-line="197" selection-start-column="57" selection-end-line="197" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/CommandeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4">
+          <caret line="84" column="53" lean-forward="false" selection-start-line="84" selection-start-column="53" selection-end-line="84" selection-end-column="53" />
+          <folding>
+            <element signature="e#34#56#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PanierController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="42" column="44" lean-forward="false" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
           <folding />
         </state>
       </provider>
