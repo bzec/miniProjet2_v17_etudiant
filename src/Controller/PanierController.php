@@ -50,9 +50,11 @@ class PanierController implements ControllerProviderInterface
         if(isset($_POST['quantite']) && isset($_POST['idProduit'])){
         $donnees['quantite']=htmlspecialchars($_POST['quantite']);
         $data['id']=htmlspecialchars($_POST['idProduit']);
+        $stock=htmlentities($_POST['stock']);
        
         
         if(! is_numeric($donnees['quantite']))$erreurs['quantite']='veuillez saisir une valeur';
+        if ($donnees['quantite']>$stock)$erreurs['stock']='stock insuffisent';
         $this->produitModel=new ProduitModel($app);
         $this->panierModel = new PanierModel($app);
         $this->userModel=new UserModel($app);
@@ -63,16 +65,21 @@ class PanierController implements ControllerProviderInterface
         $donnees['user_id']=$id;
         $donnees['produit_id']=$data['id'];
         $donnees['dateAjoutPanier']=(new \DateTime())->format('Y-m-d');
-
+        $newstock=$stock-$donnees['quantite'];
         $panierProd=$this->panierModel->recupererProduitPanier($donnees);
+
         if(empty($erreurs)){
     
             if (!empty($panierProd)){
                 $donnees['id']=$panierProd['id'];
-               // echo $donnees['quantite'];
+
+
                 $donnees['quantite']=$panierProd['quantite']+$donnees['quantite'];
+                $this->produitModel->updateStockProduit($newstock,$donnees['produit_id']);
+
                 $donnees['prix']=$data['prix'] * $donnees['quantite'];
                 $this->panierModel->updatePanier($donnees);
+                //update de l'archive manquant
                 return $app->redirect($app["url_generator"]->generate("produitClient.show"));
                 
             }else{
@@ -80,6 +87,7 @@ class PanierController implements ControllerProviderInterface
                 $donnees['prix']=$data['prix'] * $donnees['quantite'];
 
                 $this->panierModel->ajouterDansPanier($donnees);
+                $this->produitModel->updateStockProduit($newstock,$donnees['produit_id']);
                 $dataArchive =$this->panierModel->readUnPanierProduit($donnees['user_id'],$donnees['produit_id']);
                 $this->archivepanierModel->ajouterDansArchivagePanier($dataArchive);
                 return $app->redirect($app["url_generator"]->generate("produitClient.show"));
@@ -95,7 +103,7 @@ class PanierController implements ControllerProviderInterface
         
 
     }
-    //faire la route pour show pour rester sur chaud et non retourner sur le show pnier juste un coper coller en modifiant la route je le ferai tkt
+
     public function deleteProduitDansPanier(Application $app,$id) {
 
         $this->panierModel = new PanierModel($app);
@@ -108,10 +116,20 @@ class PanierController implements ControllerProviderInterface
     public function validFormDeletePanier(Application $app, Request $req) {
         $id=$app->escape($req->get('id'));
         if (is_numeric($id)) {
+            $this->produitModel=new ProduitModel($app);
             $this->panierModel = new PanierModel($app);
+
+            $panier=$this->panierModel->readUnPanierSuppr($id);
+
+
+            $produit=$this->produitModel->getProduit($panier['produit_id']);
+
+            $this->produitModel->updateStockProduit($panier['quantite'] + $produit['stock'],$panier['produit_id']);
             $this->panierModel->deletePanier($id);
+
             $this->archivepanierModel = new ArchivePanierModel($app);
             $this->archivepanierModel->deleteArchivePanier($id);
+
             return $app->redirect($app["url_generator"]->generate("produitClient.show"));
         }
         else

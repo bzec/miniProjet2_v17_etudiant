@@ -52,7 +52,7 @@ class ProduitModel {
     function getProduit($id) {
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('id', 'typeProduit_id', 'nom', 'prix', 'photo')
+            ->select('id', 'typeProduit_id', 'nom', 'prix', 'photo','stock')
             ->from('produits')
             ->where('id= :id')
             ->setParameter('id', $id);
@@ -89,6 +89,18 @@ class ProduitModel {
         return $queryBuilder->execute();
     }
 
+    public function updateStockProduit($quantite,$id)
+    {
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder
+            ->update('produits')
+            ->set('stock', '?')
+            ->where('id= ?')
+            ->setParameter(0, $quantite)
+            ->setParameter(1, $id);
+
+        return $queryBuilder->execute();
+    }
 
 
 }

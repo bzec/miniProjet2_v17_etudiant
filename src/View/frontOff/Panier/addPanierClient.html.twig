@@ -6,19 +6,27 @@
             <legend>choisir la quantié souhaité</legend>
            
             <input name="idProduit"  type="hidden" value="{{ data.id }}"/>
+            <input name="stock"  type="hidden" value="{{ data.stock }}"/>
 
             <div class="form-group">
             <p>quantié pour l'article : {{ data.nom }}</p>
             </div>
             <div class="form-group">
                     <div class="col-md-3 mb-3">
+                        <h3>Stock restant : {{ data.stock }}</h3>
                         <label for="validQuantite">quantite:</label>
-                        <input  name="quantite" type="text" {% if erreurs.quantite is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.nom is not defined %} class="form-control is-valid" {% endif %}
-                                id="quantite" placeholder="quantite" value= {% if donnees.quantite is defined%}"{{donnees.quantite}}"{% else %} "" {% endif %}  required>
+                        <input  name="quantite" type="text" {% if erreurs.quantite is defined or erreurs.stock is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.stock is not defined or erreurs.quantite is not defined %} class="form-control is-valid" {% endif %}
+                                id="quantite" placeholder="quantite" value= {% if donnees.quantite  is defined%}"{{donnees.quantite}}"{% else %} "" {% endif %}  required>
                         {% if erreurs.quantite is defined %}
                             <div class="invalid-feedback">
     
                                 {{erreurs.quantite}}
+                            </div>
+                        {% endif %}
+                        {% if erreurs.stock is defined %}
+                            <div class="invalid-feedback">
+
+                                {{erreurs.stock}}
                             </div>
                         {% endif %}
                     </div>

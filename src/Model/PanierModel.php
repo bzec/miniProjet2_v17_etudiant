@@ -16,7 +16,7 @@ class PanierModel {
     public function readUnPanier($id){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.id')
+            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.id','pan.produit_id')
             ->from('paniers','pan')
             ->innerJoin('pan','produits','prod','pan.produit_id=prod.id')
             ->innerJoin('pan','users','us','pan.user_id=us.id')
@@ -58,7 +58,7 @@ class PanierModel {
     public function readUnPanierSuppr($id){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.id')
+            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.id','pan.produit_id')
             ->from('paniers','pan')
             ->innerJoin('pan','produits','prod','pan.produit_id=prod.id')
             ->where('pan.id='.$id.'');
