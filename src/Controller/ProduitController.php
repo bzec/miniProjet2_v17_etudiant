@@ -36,11 +36,13 @@ class ProduitController implements ControllerProviderInterface
     public function showProduitsClient(Application $app) {
         $this->produitModel = new ProduitModel($app);
         $produits = $this->produitModel->getAllProduits();
+        $this->typeProduitModel = new TypeProduitModel($app);
+        $typeProduits = $this->typeProduitModel->getAllTypeProduits();
         $this->panierModel = new PanierModel($app);
         $this->userModel=new UserModel($app);
         $id=$this->userModel->recupererId($app);
         $panier = $this->panierModel->readUnPanier($id);
-        return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier]);
+        return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
     }
 
 
@@ -163,6 +165,39 @@ class ProduitController implements ControllerProviderInterface
 
     }
 
+    public function trierProduit (Application $app)
+    {
+        if ( isset($_POST['typeProduit_id'])){
+            $donnees['typeProduit_id']=htmlentities($_POST['typeProduit_id']);
+        }
+        if(! is_numeric($donnees['typeProduit_id']))$erreurs['typeProduit_id']='veuillez saisir une valeur';
+
+        if(! empty($erreurs))
+        {
+            $this->produitModel = new ProduitModel($app);
+            $produits = $this->produitModel->getAllProduits();
+            $this->typeProduitModel = new TypeProduitModel($app);
+            $typeProduits = $this->typeProduitModel->getAllTypeProduits();
+            $this->panierModel = new PanierModel($app);
+            $this->userModel=new UserModel($app);
+            $id=$this->userModel->recupererId($app);
+            $panier = $this->panierModel->readUnPanier($id);
+            return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+
+        }
+        else
+        {
+            $this->produitModel = new ProduitModel($app);
+            $produits = $this->produitModel->getAllProduits();
+            $this->typeProduitModel = new TypeProduitModel($app);
+            $typeProduits = $this->typeProduitModel->getAllTypeProduits();
+            $this->panierModel = new PanierModel($app);
+            $this->userModel=new UserModel($app);
+            $id=$this->userModel->recupererId($app);
+            $panier = $this->panierModel->readUnPanier($id);
+            return $app["twig"]->render('frontOff/showProduitsClient.html.twig',['donnees'=>$donnees,'data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+        }
+    }
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
 
@@ -179,7 +214,7 @@ class ProduitController implements ControllerProviderInterface
         $controllers->put('/edit', 'App\Controller\produitController::validFormEditProduit')->bind('produit.validFormEditProduit');
 
         $controllers->get('/showClient', 'App\Controller\produitController::showProduitsClient')->bind('produitClient.show');
-
+        $controllers->post('/trier/', 'App\Controller\produitController::trierProduit')->bind('produit.validTriage');
 
         return $controllers;
     }

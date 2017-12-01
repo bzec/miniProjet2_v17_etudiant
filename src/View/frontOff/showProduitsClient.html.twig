@@ -4,9 +4,37 @@
     <div class="row">
     <div class="col-lg-5">
 
+
+            <form method="post" action="{{ path('produit.validTriage') }}">
+            <fieldset>
+                <legend>trier</legend>
+                <div class="form-group">
+            <select name="typeProduit_id" class="form-control">
+                {% if  donnees.typeProduit_id is not defined or donnees.typeProduit_id is empty   %}
+                    <option value="">Veuillez sélectionner un produit</option>
+                {% endif %}
+                {% for typeProduit in typeProduits %}
+                    <option value="{{ typeProduit.id }}"
+                            {% if donnees.typeProduit_id is defined and typeProduit.id == donnees.typeProduit_id %}selected{% endif %}>
+                        {{ typeProduit.libelle }}
+                    </option>
+                {% endfor %}
+            </select>
+            {% if erreurs.typeProduit_id is defined %}
+                <small class="">{{erreurs.typeProduit_id}}</small>
+            {% endif %}
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6 mb-3">
+                        <button class="btn" type="submit">Trier</button>
+                    </div>
+                </div>
+            </fieldset>
+            </form>
         <h4>Produits disponibles</h4>
            {% for produit in data if data is not empty %}
-
+               {% if donnees.typeProduit_id is defined %}
+                {% if produit.typeProduit_id == donnees.typeProduit_id %}
                <div class="col-lg-15">
                     <caption>{{produit.nom}}</caption>
                     <table class="table table-striped">
@@ -22,6 +50,25 @@
                        </tbody>
                    </table>
                </div>
+               {% endif %}
+               {% endif %}
+               {% if donnees.typeProduit_id is not defined %}
+                   <div class="col-lg-15">
+                       <caption>{{produit.nom}}</caption>
+                       <table class="table table-striped">
+                           <tbody>
+                           <tr>
+                               <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{produit.photo}}" ></td>
+                               <td>prix :{{ produit.prix }}</td>
+                               <td> Stock : {{ produit.stock }}</td>
+                               <td>
+                                   <a href="{{ path('panier.add',{idProduit:produit.id}) }}">ajouter au panier</a> <br>
+                                   <a href="#"> détails sur le produit</a></td>
+                           </tr>
+                           </tbody>
+                       </table>
+                   </div>
+               {% endif %}
            {% endfor %}
     </div >
         {% if panier is not empty %}
