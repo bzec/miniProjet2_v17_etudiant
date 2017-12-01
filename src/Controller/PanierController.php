@@ -101,6 +101,7 @@ class PanierController implements ControllerProviderInterface
         $this->panierModel = new PanierModel($app);
         $panier = $this->panierModel->readUnPanierSuppr($id);
 
+
         return $app["twig"]->render('frontOff/deletePanierClient.html.twig',['panier'=>$panier]);
     }
 
@@ -109,6 +110,8 @@ class PanierController implements ControllerProviderInterface
         if (is_numeric($id)) {
             $this->panierModel = new PanierModel($app);
             $this->panierModel->deletePanier($id);
+            $this->archivepanierModel = new ArchivePanierModel($app);
+            $this->archivepanierModel->deleteArchivePanier($id);
             return $app->redirect($app["url_generator"]->generate("produitClient.show"));
         }
         else

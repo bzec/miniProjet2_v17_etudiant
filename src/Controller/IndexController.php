@@ -14,7 +14,10 @@ class IndexController implements ControllerProviderInterface
         // remplacer par une redirection :  return $app->redirect($app["url_generator"]->generate("Panier.index"));
         if ($app['session']->get('roles') == 'ROLE_ADMIN')
             return $app["twig"]->render("backOff/backOFFICE.html.twig");
-        // remplacer par une redirection
+     
+        if($app['session']->get('roles') == 'ROLE_VENDEUR'){
+            return $app["twig"]->render("backOff/backOFFICE.html.twig");
+        }
         
         return $app["twig"]->render("accueil.html.twig");
     }

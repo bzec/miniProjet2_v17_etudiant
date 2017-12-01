@@ -12,7 +12,7 @@
   </head>
   <body>
 
-{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
+{% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' or  app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_VENDEUR'  %}
   {% include "nav_backOff.html.twig" %}
 {% elseif   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_CLIENT' %}
   {% include "nav_frontOff.html.twig" %}

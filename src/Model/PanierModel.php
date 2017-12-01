@@ -29,15 +29,16 @@ class PanierModel {
     public function readUnPanierProduit($iduser,$idprod){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
-            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.id')
+            ->select('prod.photo','prod.nom','pan.quantite','pan.prix','pan.dateAjoutPanier','pan.produit_id','pan.user_id','pan.id')
             ->from('paniers','pan')
             ->innerJoin('pan','produits','prod','pan.produit_id=prod.id')
             ->innerJoin('pan','users','us','pan.user_id=us.id')
-            ->where('pan.user_id='.$iduser.' and commande_id is null and where prod.id='.$idprod.'');
+            ->where('pan.user_id='.$iduser.' and commande_id is null and prod.id='.$idprod.'');
 
-        return $queryBuilder->execute()->fetchAll();
-
+        return $queryBuilder->execute()->fetch();
     }
+
+
 
     public function updatePanier($donnees){
         $queryBuilder = new QueryBuilder($this->db);
@@ -102,6 +103,8 @@ class PanierModel {
         echo $queryBuilder;
         return $queryBuilder->execute();
     }
+
+
     public function recupererProduitPanier($donnees){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
@@ -110,13 +113,6 @@ class PanierModel {
             ->innerJoin('pan','produits','prod','pan.produit_id=prod.id')
             ->where('prod.id='.$donnees['produit_id'].' and pan.user_id='.$donnees['user_id'].'');
         return $queryBuilder->execute()->fetch();
-
-    }
-
-    public function transaction(){
-        $queryBuilder = new QueryBuilder($this->db);
-
-
 
     }
 

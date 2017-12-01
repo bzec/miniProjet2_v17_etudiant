@@ -3,7 +3,7 @@
     <div class="col-md-6 mb-2"></div>
     <table class="table table-striped">
         <thead class="thead-inverse">
-        <tr><th>id</th><th>user_id</th><th>prix</th><th>date_achat</th><th>etat</th>
+        <tr><th>id</th><th>prix</th><th>date_achat</th><th>etat</th>
 
         </tr>
         </thead>
@@ -11,10 +11,12 @@
         {% for commande in data if data is not empty %}
 
             <tr>
-                <td>{{commande.id}}</td><td>{{commande.user_id}}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
+                <td>{{commande.id}}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
                     {{commande.libelle}}</td><td>
                   </td>
+                <td> <a href="{{path('CommandeClient.details',{id:commande.id}) }}">détails sur la commande </a></td>
             </tr>
+
         {% endfor %}
         </tbody>
     </table>

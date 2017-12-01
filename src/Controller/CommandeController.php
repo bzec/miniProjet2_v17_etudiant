@@ -23,7 +23,7 @@ class CommandeController implements ControllerProviderInterface
     private  $archivepanierModel;
 
     public function index(Application $app){
-        return $this->showCommande($app);
+        return $this->showCommandeClient($app);
     }
 
     public function ajouterCommande(Application $app){
@@ -33,8 +33,6 @@ class CommandeController implements ControllerProviderInterface
         $this->commandeModel=new CommandeModel($app);
         $this->commandeModel->transaction($iduser);
 
-
-
        $this->panierModel=new PanierModel($app);
        $this->panierModel->deleteUserPanier($iduser);
 
@@ -42,22 +40,35 @@ class CommandeController implements ControllerProviderInterface
         return $app->redirect($app["url_generator"]->generate("CommandeClient.show"));
     }
 
-    public function showCommande(Application $app){
+    public function showCommandeClient(Application $app){
         $this->userModel= new UserModel($app);
         $iduser=$this->userModel->recupererId($app);
 
         $this->commandeModel = new CommandeModel($app);
-        $donnees=$this->commandeModel->getCommande($iduser);
+        $donnees=$this->commandeModel->getCommandeClient($iduser);
         return $app["twig"]->render('frontOff/showCommandeClient.html.twig',['data'=>$donnees]);
 
+    }
+
+    public function detailsCommandeClient(Application $app,$id){
+
+        $this->userModel= new UserModel($app);
+        $iduser=$this->userModel->recupererId($app);
+
+        $this->commandeModel = new CommandeModel($app);
+        //$donnees=$this->commandeModel->getCommandeClient($iduser);
+        $this->archivepanierModel= new archivepanierModel($app);
+        $this->achivepanierModel->readUnpanierCommande($iduser,$id);
+
+        return $app["twig"]->render('frontOff/detailsCommandeClient.html.twig',['data'=>$donnees]);
     }
 
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
        // $controllers->get('/', 'App\Controller\CommandeController::index')->bind('commande.index');
         $controllers->get('/add', 'App\Controller\CommandeController::ajouterCommande')->bind('CommandeClient.add');
-        $controllers->get('/show', 'App\Controller\CommandeController::index')->bind('CommandeClient.show');
-
+        $controllers->get('/show', 'App\Controller\CommandeController::showCommandeClient')->bind('CommandeClient.show');
+        $controllers->get('/show', 'App\Controller\CommandeController::detailsCommandeClient')->bind('CommandeClient.details');
 
         return $controllers;
     }

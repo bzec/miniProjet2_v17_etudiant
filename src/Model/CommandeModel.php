@@ -34,7 +34,7 @@ class CommandeModel
         return $queryBuilder->execute();
     }
 
-    public function getCommande($iduser){
+    public function getCommandeClient($iduser){
         $queryBuilder = new QueryBuilder($this->db);
         $queryBuilder
             ->select('com.id,com.user_id,com.prix,com.date_achat,com.etat_id,e.libelle')
@@ -59,8 +59,6 @@ class CommandeModel
         $lastinsertid=$conn->lastInsertId();
         $requestSQL=$conn->prepare('update paniers set commande_id=? where user_id=? and commande_id is null');
         $requestSQL->execute([$lastinsertid, $user_id]);
-        $requestSQL = $conn->prepare('insert into commandes(user_id, prix, etat_id) values (?,?,?)');
-        $requestSQL->execute([$user_id, $prix, 1]);
         $conn->commit();
 
     }
