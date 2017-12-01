@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+
+<div class="container">
+
+    {% if data is empty %}
+        <h1>Le panier est vide </h1>
+        {% endif %}
+    {% for panier in data if data is not empty %}
+        <div class="row">
+            <div class="col-lg-6">
+                <caption>{{panier.nom}}</caption>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{panier.photo}}" >
+                        </td>
+                        <td>
+                            prix :{{ panier.prix }} <br>
+                            Quantite :{{ panier.quantite }} <br>
+                            Date d'ajout : {{ panier.dateAjoutPanier|date('d/m/Y')}}
+                        </td>
+                        <td>
+
+                            <a href="{{path('panier.deleteProduit', {id: panier.id})}}">Suppression</a> <br>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+{% endfor %}
+    {% if data is not empty %}
+    <div class="col-md-6 mb-3">
+        <a class="btn btn-success " href="{{path('CommandeClient.add')}}">Valider</a>
+    </div>
+        {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+<form method="post" action="{{ path('produit.validFormAddProduit') }}">
+    <fieldset>
+        <legend>Creer un produit (twig)</legend>
+    <div class="form-group">
+        <div class="col-md-3 mb-3">
+            <label for="validNom">Nom:</label>
+            <input  name="nom" type="text" {% if erreurs.nom is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.nom is not defined %} class="form-control is-valid" {% endif %}
+                    id="validNom" placeholder="nom" value="{{donnees.nom|default('')}}" required>
+            {% if erreurs.nom is defined %}
+            <div class="invalid-feedback">
+
+                {{erreurs.nom}}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="col-md-6 mb-3">
+              <select name="typeProduit_id" class="form-control">
+                {% if  donnees.typeProduit_id is not defined or donnees.typeProduit_id is empty   %}
+                      <option value="">Veuillez sélectionner un produit</option>
+                {% endif %}
+                {% for typeProduit in typeProduits %}
+                    <option value="{{ typeProduit.id }}"
+                            {% if donnees.typeProduit_id is defined and typeProduit.id == donnees.typeProduit_id %}selected{% endif %}>
+                        {{ typeProduit.libelle }}
+                    </option>
+                {% endfor %}
+            </select>
+            {% if erreurs.typeProduit_id is defined %}
+                <small class="">{{erreurs.typeProduit_id}}</small>
+            {% endif %}
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="col-md-6 mb-3">
+            <label for="validPrix">Prix :</label>
+            <input name="prix" type="text"  {% if erreurs.prix is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.prix is not defined %} class="form-control is-valid" {% endif %}
+                   id="validPrix" placeholder="prix" value="{{donnees.prix|default('')}}" required>
+            {% if erreurs.prix is defined %}
+                <div class="invalid-feedback">
+                    {{erreurs.prix}}
+                </div>
+            {% endif %}
+        </div>
+        </div>
+        <div class="form-group">
+        <div class="col-md-6 mb-3">
+            <label for="validPhoto">Photo :</label>
+            <input name="photo" type="text" class="form-control is-valid" id="validPhoto" placeholder="photo" value="{{donnees.photo|default('')}}" required>
+            {% if erreurs.photo is defined %}
+                <small class="error">{{erreurs.photo}}</small>
+            {% endif %}
+        </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 mb-3">
+                <button class="btn" type="submit">Créer</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+{% endblock %}
