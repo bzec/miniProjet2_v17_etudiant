@@ -5,37 +5,51 @@
         <div class="col-lg-5">
 
             <h4>Mon profil</h4>
-            {% for user in data if data is not empty %}
+
 
                 <div class="col-lg-15">
                     {% if user.username is defined %}
-                    <caption> {{user.username}} </caption>
+                    <caption> nom d'utilisateur :{{user.username}} </caption>
                         {% endif %}
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            {% if user.nom is defined %}
+
+                            {% if user.nom is defined and user.nom is not null %}
                             <td>nom : {{ user.nom }}</td>
                                 {% endif %}
+                        </tr>
+                        <tr>
 
-                            {% if user.code_postal is defined %}
+                            {% if user.code_postal is defined and user.code_postal is not null %}
                                 <td>code postal : {{ user.code_postal }}</td>
                             {% endif %}
-                            {% if user.ville is defined %}
+                        <tr>
+                            {% if user.ville is defined and user.ville is not null %}
                                 <td>Ville : {{ user.ville }}</td>
                             {% endif %}
-                            {% if user.adresse is defined %}
+                        </tr>
+                        <tr>
+                            {% if user.adresse is defined and user.adresse is not null %}
                                 <td>adresse: {{ user.adresse }}</td>
                             {% endif %}
-                            {% if user.email is defined %}
+                        </tr>
+                        <tr>
+                            {% if user.email is defined and user.email is not null %}
                             <td>email :{{ user.email }}</td>
                             {% endif %}
                         </tr>
+                        <tr>
+                            <td> <a class="btn btn-success " href="{{path('profil.edit' , {id: user.id})}}">modifier profil</a></td>
+
+                        </tr>
                         </tbody>
+
                     </table>
                 </div>
-            {% endfor %}
+
         </div >
+
 
     </div>
 {%endblock%}

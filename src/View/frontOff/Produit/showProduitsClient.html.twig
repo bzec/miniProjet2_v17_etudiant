@@ -40,20 +40,22 @@
                        <tr>
                            <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{produit.photo}}" ></td>
                            <td>prix :{{ produit.prix }}</td>
-                          {% if  produit.stock < 10 %}
-                           <td> Plus que {{ produit.stock }} !!!</td>
-                          {% endif %}
+                           {% if produit.stock<10 %}
+                           <td> Plus que {{ produit.stock }} exemplaires!!!</td>
+                               {% endif %}
                            <td>
                                <a href="{{ path('panier.add',{idProduit:produit.id}) }}">ajouter au panier</a> <br>
                                <a href="{{ path('produit.detailProduit',{id:produit.id})  }}"> détails sur le produit</a>
                            </td>
 
+
                        </tr>
                        </tbody>
                    </table>
                </div>
+                    {% endif %}
                {% endif %}
-               {% endif %}
+
                {% if donnees.typeProduit_id is not defined %}
                    <div class="col-lg-15">
                        <caption>{{produit.nom}}</caption>
@@ -62,7 +64,9 @@
                            <tr>
                                <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{produit.photo}}" ></td>
                                <td>prix :{{ produit.prix }}</td>
-                               <td> Stock : {{ produit.stock }}</td>
+                               {% if produit.stock<10 %}
+                                   <td> Plus que {{ produit.stock }} exemplaires!!!</td>
+                               {% endif %}
                                <td>
                                    <a href="{{ path('panier.add',{idProduit:produit.id}) }}">ajouter au panier</a> <br>
                                    <a href="{{ path('produit.detailProduit',{id:produit.id}) }}"> détails sur le produit</a></td>

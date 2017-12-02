@@ -33,13 +33,30 @@ class UserModel {
         return $app['session']->get('user_id');
     }
 
+    public function updateProfil($donnees){
+        $queryBuilder = new QueryBuilder($this->db);
+        $queryBuilder->update('users')
+            ->set('username','"'.$donnees['username'].'"')
+            ->set('motdepasse', '"'.$donnees['motdepasse'].'"')
+            ->set('email', '"'.$donnees['email'].'"')
+            ->set('nom', '"'.$donnees['nom'].'"')
+            ->set('code_postal', '"'.$donnees['code_postal'].'"')
+            ->set('ville', '"'.$donnees['ville'].'"')
+            ->set('adresse', '"'.$donnees['adresse'].'"')
+
+            ->where('id='.$donnees['id'].'')
+        ;
+        echo $queryBuilder;
+        return $queryBuilder->execute();
+
+    }
 	public function getuser($user_id) {
 		$queryBuilder = new QueryBuilder($this->db);
 		$queryBuilder
-			->select('id,username,email,nom,code_postal ,ville,adresse')
+			->select('*')
 			->from('users')
 			->where('id ='.$user_id.';');
-		echo $queryBuilder;
+		//echo $queryBuilder;
 		return $queryBuilder->execute()->fetch();
 
 	}
