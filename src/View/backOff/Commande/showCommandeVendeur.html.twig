@@ -17,7 +17,7 @@
                 <td>{{commande.id}}</td><td>{{ commande.username }}</td><td>{{commande.prix}}</td><td>{{commande.date_achat}}</td><td>
                     {{commande.libelle}}</td>
                 <td> <a href="{{path('CommandeVendeur.details',{id:commande.id}) }}">détails sur la commande </a> <br>
-                    <a href="{{ path('CommandeVendeur.annuler',{idcom:commande.id})}}">annuler commande </a> <br>
+                    <a href="{{ path('CommandeVendeur.annuler',{idcom:commande.id})}} ">annuler commande </a> <br>
                     {% if commande.etat_id !=2  %}
                     <a href="{{ path('CommandeVendeur.expedier',{idcom:commande.id})}}">expédier commande </a>
                     {% endif %}

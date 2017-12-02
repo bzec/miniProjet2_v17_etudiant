@@ -109,7 +109,6 @@ class CommandeController implements ControllerProviderInterface
 
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
-       // $controllers->get('/', 'App\Controller\CommandeController::index')->bind('commande.index');
         $controllers->get('/add', 'App\Controller\CommandeController::ajouterCommande')->bind('CommandeClient.add');
 
         $controllers->get('/show', 'App\Controller\CommandeController::showCommandeClient')->bind('CommandeClient.show');

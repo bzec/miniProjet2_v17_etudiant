@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+
+    <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <caption>{{produit.nom}}</caption>
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td><img style="width:80px;height:80px" src="{{asset('images/')}}{{produit.photo}}" >
+                            </td>
+                            <td>
+                                prix :{{ produit.prix }} <br>
+                                stock :{{ produit.stock }} <br>
+                                catégorie produit : {{ produit.libelle }}
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        <div class="col-md-6 mb-3">
+            <a class="btn btn-success " href="{{path('produitClient.show')}}">retour</a>
+        </div>
+
+    </div>
+{% endblock %}

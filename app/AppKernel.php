@@ -58,5 +58,32 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 // Montage des controleurs sur le routeur
 include('routing.php');
 
+$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+    $nomRoute=$request->get("_route");
+    $routeAdmin=['CommandeVendeur.show','CommandeVendeur.details','CommandeVendeur.expedier','CommandeVendeur.annuler'
+        ,'produit.showProduits','produit.addProduit','produit.validFormAddProduit','produit.deleteProduit'
+        ,'produit.validFormDeleteProduit','produit.editProduit','produit.validFormEditProduit'];
+
+
+    $routeClient=['CommandeClient.add','CommandeClient.show','CommandeClient.details','panier.index'
+        ,'panier.add','panier.addFromAddPanier','panier.show','panier.deleteProduit'
+        ,'panier.validFormDeletePanier','produitClient.show','produit.validTriage','produit.detailsProduit'];
+
+    $routeVisiteur=['produitVisiteur.showProduits','panier.validTriage'];
+
+    if (($app['session']->get('roles') != 'ROLE_ADMIN' && $app['session']->get('roles') != 'ROLE_VENDEUR' ) && in_array($nomRoute, $routeAdmin) ) {
+        return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
+    }
+
+    if ($app['session']->get('roles') != 'ROLE_CLIENT' &&   in_array($nomRoute, $routeClient)) {
+        return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
+    }
+
+    if (($app['session']->get('roles') == 'ROLE_ADMIN' || $app['session']->get('roles') == 'ROLE_CLIENT' || $app['session']->get('roles') == 'ROLE_VENDEUR') && $nomRoute=="user.login") {
+        return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
+    }
+
+});
+
 //On lance l'application
 $app->run();

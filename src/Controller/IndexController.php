@@ -21,11 +21,15 @@ class IndexController implements ControllerProviderInterface
         
         return $app["twig"]->render("accueil.html.twig");
     }
+    public function errorDroit(Application $app){
+        return $app['twig']->render('errorDroit.html.twig');
+    }
 
     public function connect(Application $app)
     {
         $index = $app['controllers_factory'];
         $index->match("/", 'App\Controller\IndexController::index')->bind('accueil');
+        $index->match("/errorDroit", 'App\Controller\IndexController::errorDroit')->bind("index.errorDroit");
         return $index;
     }
 

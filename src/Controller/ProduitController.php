@@ -40,10 +40,12 @@ class ProduitController implements ControllerProviderInterface
         $typeProduits = $this->typeProduitModel->getAllTypeProduits();
         $this->panierModel = new PanierModel($app);
         $this->userModel=new UserModel($app);
-        $id=$this->userModel->recupererId($app);
+        $id = $this->userModel->recupererId($app);
         $panier = $this->panierModel->readUnPanier($id);
         return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
     }
+
+
 
 
     public function addProduit(Application $app) {
@@ -198,6 +200,13 @@ class ProduitController implements ControllerProviderInterface
             return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['donnees'=>$donnees,'data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
         }
     }
+    public function detailProduit (Application $app , $id){
+
+        $this->produitModel=new ProduitModel($app);
+        $produit= $this->produitModel->getProduit($id);
+        //print_r($produit);
+        return $app["twig"]->render('frontOff/Produit/detailsProduit.html.twig',['produit'=>$produit]);
+    }
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
 
@@ -215,6 +224,8 @@ class ProduitController implements ControllerProviderInterface
 
         $controllers->get('/showClient', 'App\Controller\produitController::showProduitsClient')->bind('produitClient.show');
         $controllers->post('/trier/', 'App\Controller\produitController::trierProduit')->bind('produit.validTriage');
+
+        $controllers->get('/detailProduit/{id}', 'App\Controller\produitController::detailProduit')->bind('produit.detailProduit');
 
         return $controllers;
     }

@@ -17,7 +17,7 @@
                     {{produit.photo}}</td><td>
 					<img style="width:40px;height:40px" src="{{asset('images/')}}{{produit.photo}}" alt="image de {{produit.libelle}}" >
 				</td>
-                {% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' %}
+                {% if   app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_ADMIN' or  app.session.get('roles') == 'ROLE_VENDEUR' %}
 					<td>
 						<a href="{{ path('produit.editProduit', {id: produit.id}) }}">modifier</a>
 						<a href="{{ path('produit.deleteProduit', {id: produit.id}) }}">supprimer</a>

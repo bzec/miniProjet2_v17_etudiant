@@ -79,7 +79,8 @@ class PanierController implements ControllerProviderInterface
 
                 $donnees['prix']=$data['prix'] * $donnees['quantite'];
                 $this->panierModel->updatePanier($donnees);
-                //update de l'archive manquant
+                $this->archivepanierModel->updateArchivePanier($donnees);
+
                 return $app->redirect($app["url_generator"]->generate("produitClient.show"));
                 
             }else{

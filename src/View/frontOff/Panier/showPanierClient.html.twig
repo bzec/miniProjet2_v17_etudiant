@@ -34,7 +34,7 @@
 
 
 {% endfor %}
-    {% if data is not empty %}
+    {% if data is not empty  and  app.session.get('roles') is defined and  app.session.get('roles') == 'ROLE_CLIENT'%}
     <div class="col-md-6 mb-3">
         <a class="btn btn-success " href="{{path('CommandeClient.add')}}">Valider</a>
     </div>
