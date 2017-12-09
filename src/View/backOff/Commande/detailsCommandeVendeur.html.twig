@@ -3,10 +3,11 @@
 
 <div class="container">
 
+    <h1>Utilisateur : {{username}}</h1>
+
     {% for panier in data if data is not empty %}
         <div class="row">
             <div class="col-lg-6">
-                <h2>utilisateur : {{ panier.username }}</h2>
                 <caption>{{panier.nom}}</caption>
                 <table class="table table-striped">
                     <tbody>
@@ -28,7 +29,7 @@
 
 
 {% endfor %}
-    
+    <h1>Prix total : {{ prixtotal }}</h1>
     <div class="col-md-6 mb-3">
         <a class="btn btn-success " href="{{path('CommandeVendeur.show')}}">retour</a>
     </div>

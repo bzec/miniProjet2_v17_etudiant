@@ -65,12 +65,13 @@ class CommandeController implements ControllerProviderInterface
         $iduser=$this->userModel->recupererId($app);
 
         $this->commandeModel = new CommandeModel($app);
-        //$donnees=$this->commandeModel->getCommandeClient($iduser);
         $this->archivepanierModel= new ArchivePanierModel($app);
         $donnees=$this->archivepanierModel->readPanierCommande($iduser,$id);
-
-
-        return $app["twig"]->render('frontOff/Commande/detailsCommandeClient.html.twig',['data'=>$donnees]);
+        $prixtototal=0;
+        foreach($donnees as $p){
+            $prixtototal+=$p['prix'];
+        }
+        return $app["twig"]->render('frontOff/Commande/detailsCommandeClient.html.twig',['data'=>$donnees , 'prixtotal'=>$prixtototal]);
     }
 
     public function showCommandeVendeur (Application $app){
@@ -88,9 +89,13 @@ class CommandeController implements ControllerProviderInterface
 
         $this->archivepanierModel= new ArchivePanierModel($app);
         $donnees=$this->archivepanierModel->readPanierCommandeVendeur($id);
-        //print_r($donnees);
-        //die();
-        return $app["twig"]->render('backOff/Commande/detailsCommandeVendeur.html.twig',['data'=>$donnees]);
+        $prixtototal=0;
+        foreach($donnees as $p){
+            $user=$p['username'];
+            $prixtototal+=$p['prix'];
+        }
+        //echo $user;
+        return $app["twig"]->render('backOff/Commande/detailsCommandeVendeur.html.twig',['data'=>$donnees, 'prixtotal'=>$prixtototal,'username'=>$user]);
     }
 
     public function updateEtat(Application $app,$idcom){
