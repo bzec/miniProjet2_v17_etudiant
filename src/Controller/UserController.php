@@ -83,9 +83,15 @@ class UserController implements ControllerProviderInterface {
                 'adresse' => htmlentities($_POST['adresse']),
                 'id'=>htmlentities($_POST['id'])
             ];
-            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['username']))) $erreurs['username'] = 'nom composé de 2 lettres minimum';
-            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['motdepasse']))) $erreurs['motdepasse'] = 'nom composé de 2 lettres minimum';
-            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['email']))) $erreurs['email'] = 'nom composé de 2 lettres minimum';
+            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['username']))) $erreurs['username'] = 'username composé de 2 lettres minimum';
+            if ((!preg_match("/^[A-Za-z ]{4,}/", $donnees['motdepasse']))) $erreurs['motdepasse'] = 'mdp composé de 4 lettres minimum';
+           // if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['email']))) $erreurs['email'] = 'email composé de 2 lettres minimum';
+            if (!filter_var($donnees['email'], FILTER_VALIDATE_EMAIL)) $erreurs['email']= 'email incorrect';
+            if ((!preg_match("/^[A-Za-z0-9 ]{2,}/", $donnees['adresse']))) $erreurs['adresse'] = 'adresse composé de 2 lettres minimum';
+            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['ville']))) $erreurs['ville'] = 'ville composé de 2 lettres minimum';
+            if ((!preg_match("/^[0-9]{5,}/", $donnees['code_postal']))) $erreurs['code_postal'] = 'code postal composé de 5 chiffres';
+            if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['nom']))) $erreurs['code_postal'] = 'nom composé de 2 lettres minimum';
+
             if (!empty($erreurs)) {
 
                 return $app["twig"]->render('frontOff/editProfil.html.twig', ['donnees' => $donnees, 'erreurs' => $erreurs]);

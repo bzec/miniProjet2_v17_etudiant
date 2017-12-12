@@ -63,7 +63,7 @@
                            id="validCP" placeholder="code_postal" value="{{donnees.code_postal}}" >
                     {% if erreurs.code_postal is defined %}
                         <div class="invalid-feedback">
-                            {{erreurs.email}}
+                            {{erreurs.code_postal}}
                         </div>
                     {% endif %}
                 </div>
@@ -80,9 +80,9 @@
                             {{erreurs.ville}}
                         </div>
                     {% endif %}
+
                 </div>
             </div>
-
             <div class="form-group">
                 <div class="col-md-6 mb-3">
                     <label for="validAdresse">adresse :</label>
