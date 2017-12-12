@@ -207,6 +207,46 @@ class ProduitController implements ControllerProviderInterface
         //print_r($produit);
         return $app["twig"]->render('frontOff/Produit/detailsProduit.html.twig',['produit'=>$produit]);
     }
+
+    public function reapProduit(Application $app , $id){
+        $this->produitModel=new ProduitModel($app);
+        $produit= $this->produitModel->getProduit($id);
+        //print_r($produit);
+        return $app["twig"]->render('backOff/Produit/reap.html.twig',['donnees'=>$produit]);
+
+    }
+
+    public function formReapPorduit(Application $app){
+
+
+        if(isset($_POST['stock']) && isset($_POST['idProduit'])){
+            $donnees['stock']=htmlspecialchars($_POST['stock']);
+            $donnees['id']=htmlspecialchars($_POST['idProduit']);
+
+
+
+            if(! is_numeric($donnees['stock']))$erreurs['stock']='veuillez saisir une valeur';
+
+
+            if(empty($erreurs)){
+                $this->produitModel=new ProduitModel($app);
+                $this->produitModel->updateStockProduit($donnees['stock'],$donnees['id']);
+                return $app->redirect($app["url_generator"]->generate("produit.showProduits"));
+
+
+            }else {
+
+                return $app["twig"]->render('backOff/Panier/reap.html.twig',['donnees'=>$donnees,'erreurs'=>$erreurs]);
+            }
+        }
+        else{
+            return $app->abort(404, 'error Pb id form reap');
+        }
+
+
+    }
+
+
     public function connect(Application $app) {  //http://silex.sensiolabs.org/doc/providers.html#controller-providers
         $controllers = $app['controllers_factory'];
 
@@ -227,6 +267,8 @@ class ProduitController implements ControllerProviderInterface
 
         $controllers->get('/detailProduit/{id}', 'App\Controller\produitController::detailProduit')->bind('produit.detailProduit');
 
+        $controllers->get('/reap/{id}', 'App\Controller\produitController::reapProduit')->bind('produit.reap');
+        $controllers->post('/reap/', 'App\Controller\produitController::formReapPorduit')->bind('produit.Formreap');
         return $controllers;
     }
 }
