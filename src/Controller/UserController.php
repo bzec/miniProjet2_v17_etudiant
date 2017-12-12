@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\UserModel;
 
+use Gregwar\Captcha\CaptchaBuilder;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;   // modif version 2.0
 
@@ -107,11 +108,77 @@ class UserController implements ControllerProviderInterface {
 
         }
 
+        public function addUser(Application $app){
+            $builder = new CaptchaBuilder();
+            $builder->build();
+            $_SESSION['phrase'] = $builder -> getPhrase();
+            return $app["twig"]->render('frontOff/inscription.html.twig',['image'=>$builder->inline()]);
+        }
+
+        public  function validFormaddUser(Application $app){
+
+            if (isset($_POST['nom']) && isset($_POST['code_postal']) and isset($_POST['ville'])
+                and isset($_POST['adresse']) && isset($_POST['username'])
+                && isset($_POST['motdepasse']) && isset($_POST['email']) && isset($_POST['captcha']) ) {
+                $donnees = [
+                    'nom' => htmlspecialchars($_POST['nom']),
+                    'code_postal' => htmlspecialchars($_POST['code_postal']),
+                    'ville' => htmlspecialchars($_POST['ville']),
+                    'adresse' => htmlspecialchars($_POST['adresse']),
+                    'username' => htmlspecialchars($_POST['username']),
+                    'motdepasse' => htmlspecialchars($_POST['motdepasse']),
+                    'email' => htmlspecialchars($_POST['email']),
+                    'captcha' => htmlspecialchars($_POST['captcha'])
+                ];
+                if ((!preg_match("/^[A-Za-z0-9 ]{2,}/", $donnees['username']))) $erreurs['username'] = 'username composé de 2 lettres minimum';
+                if ((!preg_match("/^[A-Za-z0-9 ]{4,}/", $donnees['motdepasse']))) $erreurs['motdepasse'] = 'mdp composé de 4 lettres minimum';
+                if (!filter_var($donnees['email'], FILTER_VALIDATE_EMAIL)) $erreurs['email']= 'email incorrect';
+                if ((!preg_match("/^[A-Za-z0-9 ]{2,}/", $donnees['adresse']))) $erreurs['adresse'] = 'adresse composé de 2 lettres minimum';
+                if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['ville']))) $erreurs['ville'] = 'ville composé de 2 lettres minimum';
+                if ((!preg_match("/^[0-9]{5,}/", $donnees['code_postal']))) $erreurs['code_postal'] = 'code postal composé de 5 chiffres';
+                if ((!preg_match("/^[A-Za-z ]{2,}/", $donnees['nom']))) $erreurs['nom'] = 'nom composé de 2 lettres minimum';
+                if($donnees['captcha'] != $_SESSION['phrase']) $erreurs['captcha']='Le captcha est incorrect';
+
+                $this->userModel = new UserModel($app);
+                $data=$this->userModel->getalluser();
+                foreach ($data as $value){
+                    if($donnees['username'] == $value['username']){
+                        $erreurs['username']='Cette username est déjà utilisé, veuillez en prendre un autre';
+                        break;
+                    }
+                }
+
+                if(! empty($erreurs))
+                {
+                    $builder = new CaptchaBuilder();
+                    $builder->build();
+                    $_SESSION['phrase'] = $builder -> getPhrase();
+                    return $app["twig"]->render('frontOff/inscription.html.twig',['donnees'=>$donnees , 'erreurs'=> $erreurs, 'image'=>$builder->inline()]);
+                }
+                else
+                {
+
+                    $grainDeSel = "gsjkstzzeadsfùzrafsdf!sq!fezlkfes";
+                    $hash = md5($donnees['motdepasse'].$grainDeSel);
+                    $donnees['password'] = $hash;
+                    print_r($donnees);
+                    $this->userModel = new UserModel($app);
+                    $this->userModel->insertUser($donnees);
+                    return $app->redirect($app["url_generator"]->generate("accueil"));
+                }
+            }
+            else
+                return $app->abort(404, 'error Pb data form Add');
+
+        }
     public function connect(Application $app) {
 		$controllers = $app['controllers_factory'];
 		$controllers->match('/', 'App\Controller\UserController::index')->bind('user.index');
 		$controllers->get('/login', 'App\Controller\UserController::connexionUser')->bind('user.login');
 		$controllers->post('/login', 'App\Controller\UserController::validFormConnexionUser')->bind('user.validFormlogin');
+
+        $controllers->get('/add', 'App\Controller\UserController::addUser')->bind('user.add');
+        $controllers->post('/add', 'App\Controller\UserController::validFormaddUser')->bind('user.validFormAdduser');
 
 		$controllers->get('/logout', 'App\Controller\UserController::deconnexionSession')->bind('user.logout');
         $controllers->get('/profil', 'App\Controller\UserController::showProfil')->bind('user.profil');

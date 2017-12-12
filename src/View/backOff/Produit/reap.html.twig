@@ -6,7 +6,6 @@
                 <legend>réapprovisionner le stock </legend>
 
                 <input name="idProduit"  type="hidden" value="{{ donnees.id }}"/>
-                <input name="stock"  type="hidden" value="{{ donnees.stock }}"/>
 
                 <div class="form-group">
                     <p>stock pour l'article : {{ donnees.nom }}</p>
@@ -15,7 +14,7 @@
                     <div class="col-md-3 mb-3">
                         <label for="validstock">entrer le nouveau stock:</label>
                         <input  name="stock" type="text" {% if erreurs.stock is defined or erreurs.stock is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.stock is not defined or erreurs.stock is not defined %} class="form-control is-valid" {% endif %}
-                                id="quantite" placeholder="stock" value= {% if donnees.stock  is defined%}"{{donnees.stock}}"{% else %} "" {% endif %}  required>
+                                id="stock" placeholder="stock" value= {% if donnees.stock  is defined%}"{{donnees.stock}}"{% else %} "" {% endif %}  required>
                         {% if erreurs.stock is defined %}
                             <div class="invalid-feedback">
 
@@ -32,6 +31,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-6 mb-3">
+                        <input type="hidden"   name="_csrf_token"   value="{{ csrf_token('token') }}">
+
                         <button class="btn btn-danger " type="submit">valider</button>
                     </div>
                 </div>

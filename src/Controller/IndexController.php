@@ -24,12 +24,17 @@ class IndexController implements ControllerProviderInterface
     public function errorDroit(Application $app){
         return $app['twig']->render('errorDroit.html.twig');
     }
+    public function errorCsrf(Application $app){
+        return $app['twig']->render('v_error_csrf.html.twig');
+    }
+
 
     public function connect(Application $app)
     {
         $index = $app['controllers_factory'];
         $index->match("/", 'App\Controller\IndexController::index')->bind('accueil');
         $index->match("/errorDroit", 'App\Controller\IndexController::errorDroit')->bind("index.errorDroit");
+        $index->match("/errorCsrf", 'App\Controller\IndexController::errorCsrf')->bind("index.errorCsrf");
         return $index;
     }
 

@@ -1,0 +1,110 @@
+{% extends "layout.html.twig" %}
+{% block contenu %}
+    <form method="post" action="{{ path('user.validFormAdduser') }}">
+        <fieldset>
+            <legend>Inscription (twig)</legend>
+            <div class="form-group">
+                <div class="col-md-3 mb-3">
+                    <label for="validNom">Nom:</label>
+                    <input  name="nom" type="text" {% if erreurs.nom is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.nom is not defined %} class="form-control is-valid" {% endif %}
+                            id="validNom" placeholder="nom" value="{{donnees.nom|default('')}}" required>
+                    {% if erreurs.nom is defined %}
+                        <div class="invalid-feedback">
+
+                            {{erreurs.nom}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validCodePostal">code postal :</label>
+                    <input name="code_postal" type="text"  {% if erreurs.code_postal is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.code_postal is not defined %} class="form-control is-valid" {% endif %}
+                           id="validCodePostal" placeholder="code_postal" value="{{donnees.code_postal|default('')}}" required>
+                    {% if erreurs.code_postal is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.code_postal}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validVille">ville :</label>
+                    <input name="ville" type="text" {% if erreurs.ville is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.ville is not defined %} class="form-control is-valid" {% endif %} id="validVille" placeholder="ville" value="{{donnees.ville|default('')}}" required>
+                    {% if erreurs.ville is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.ville}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validAdress">adresse :</label>
+                    <input name="adresse" type="text" {% if erreurs.adresse is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.adresse is not defined %} class="form-control is-valid" {% endif %} id="validAdress" placeholder="adresse" value="{{donnees.adresse|default('')}}" required>
+                    {% if erreurs.adresse is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.adresse}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validUsername">username :</label>
+                    <input name="username" type="text"  {% if erreurs.username is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.username is not defined %} class="form-control is-valid" {% endif %} id="validUsername" placeholder="username" value="{{donnees.username|default('')}}" required>
+                    {% if erreurs.username is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.username}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validMdp">mot de passe :</label>
+                    <input name="motdepasse" type="password"  {% if erreurs.motdepasse is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.motdepasse is not defined %} class="form-control is-valid" {% endif %} id="validMdp" placeholder="motdepasse" value="{{donnees.motdepasse|default('')}}" required>
+                    {% if erreurs.motdepasse is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.motdepasse}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validEmail">email:</label>
+                    <input name="email" type="text" {% if erreurs.email is defined %} class="form-control is-invalid" {% endif %}  {% if erreurs.email is not defined %} class="form-control is-valid" {% endif %} id="validEmail" placeholder="email" value="{{donnees.email|default('')}}" required>
+                    {% if erreurs.email is defined %}
+                        <div class="invalid-feedback">
+                            {{erreurs.email}}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <img src="{{ image }}" name="image" value="" /><br>
+
+            <label>Saisir captcha :
+                <input type="text" name="captcha">
+                {% if erreurs.captcha is defined %}
+                    <small class="error">{{erreurs.captcha}}</small>
+                {% endif %}
+            </label>
+
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <input type="hidden"   name="_csrf_token"   value="{{ csrf_token('token') }}">
+                    <button class="btn" type="submit">valider</button>
+                </div>
+            </div>
+
+
+        </fieldset>
+    </form>
+{% endblock %}

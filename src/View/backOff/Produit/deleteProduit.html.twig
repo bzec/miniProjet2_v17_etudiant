@@ -1,6 +1,7 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
 <form method="post" action="{{ path('produit.validFormDeleteProduit') }}">
+
     <fieldset>
         <input name="id"  type="hidden" value="{{donnees.id}}" />
     <div class="form-group">
@@ -20,7 +21,10 @@
     </div>
 		<input type="hidden" id="_method" name="_method" value="delete" />
         <div class="form-group">
+
             <div class="col-md-6 mb-3">
+                <input type="hidden"   name="_csrf_token"   value="{{ csrf_token('token') }}">
+
                 <button class="btn" type="submit">supprimer</button>
             </div>
         </div>

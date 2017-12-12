@@ -52,10 +52,7 @@ class CommandeController implements ControllerProviderInterface
         foreach ($donnees as $value){
             $total+=$value['prix'];
         }
-
-
        return $app["twig"]->render('frontOff/Commande/showCommandeClient.html.twig',['data'=>$donnees , 'prixtotal'=>$total]);
-
     }
 
 

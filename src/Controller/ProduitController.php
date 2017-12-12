@@ -11,6 +11,7 @@ use App\Model\TypeProduitModel;
 use App\Model\PanierModel;
 use App\Model\UserModel;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Security;
@@ -23,38 +24,42 @@ class ProduitController implements ControllerProviderInterface
     private $userModel;
     private $panierModel;
 
-    public function index(Application $app) {
+    public function index(Application $app)
+    {
         return $this->showProduits($app);
     }
 
-    public function showProduits(Application $app) {
+    public function showProduits(Application $app)
+    {
         $this->produitModel = new ProduitModel($app);
         $produits = $this->produitModel->getAllProduits();
-        return $app["twig"]->render('backOff/Produit/showProduits.html.twig',['data'=>$produits]);
+        return $app["twig"]->render('backOff/Produit/showProduits.html.twig', ['data' => $produits]);
     }
 
-    public function showProduitsClient(Application $app) {
+    public function showProduitsClient(Application $app)
+    {
         $this->produitModel = new ProduitModel($app);
         $produits = $this->produitModel->getAllProduits();
         $this->typeProduitModel = new TypeProduitModel($app);
         $typeProduits = $this->typeProduitModel->getAllTypeProduits();
         $this->panierModel = new PanierModel($app);
-        $this->userModel=new UserModel($app);
+        $this->userModel = new UserModel($app);
         $id = $this->userModel->recupererId($app);
         $panier = $this->panierModel->readUnPanier($id);
-        return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig',['data'=>$produits ,'panier'=>$panier,'typeProduits'=>$typeProduits]);
+        return $app["twig"]->render('frontOff/Produit/showProduitsClient.html.twig', ['data' => $produits, 'panier' => $panier, 'typeProduits' => $typeProduits]);
     }
 
 
-
-
-    public function addProduit(Application $app) {
+    public function addProduit(Application $app)
+    {
         $this->typeProduitModel = new TypeProduitModel($app);
         $typeProduits = $this->typeProduitModel->getAllTypeProduits();
-        return $app["twig"]->render('backOff/Produit/addProduit.html.twig',['typeProduits'=>$typeProduits]);
+        return $app["twig"]->render('backOff/Produit/addProduit.html.twig', ['typeProduits' => $typeProduits]);
     }
 
-    public function validFormAddProduit(Application $app, Request $req) {
+    public function validFormAddProduit(Application $app, Request $req)
+    {
+
         if (isset($_POST['nom']) && isset($_POST['typeProduit_id']) and isset($_POST['nom']) and isset($_POST['photo'])) {
             $donnees = [
                 'nom' => htmlspecialchars($_POST['nom']),                    // echapper les entrées

@@ -62,7 +62,7 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
     $nomRoute=$request->get("_route");
     $routeAdmin=['CommandeVendeur.show','CommandeVendeur.details','CommandeVendeur.expedier','CommandeVendeur.annuler'
         ,'produit.showProduits','produit.addProduit','produit.validFormAddProduit','produit.deleteProduit'
-        ,'produit.validFormDeleteProduit','produit.editProduit','produit.validFormEditProduit'];
+        ,'produit.validFormDeleteProduit','produit.editProduit','produit.validFormEditProduit ','produit.Formreap' , 'produit.reap'];
 
 
     $routeClient=['CommandeClient.add','CommandeClient.show','CommandeClient.details','panier.index'
@@ -82,6 +82,32 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
     if (($app['session']->get('roles') == 'ROLE_ADMIN' || $app['session']->get('roles') == 'ROLE_CLIENT' || $app['session']->get('roles') == 'ROLE_VENDEUR') && $nomRoute=="user.login") {
         return $app->redirect($app["url_generator"]->generate("index.errorDroit"));
     }
+
+});
+use Silex\Provider\CsrfServiceProvider;
+$app->register(new CsrfServiceProvider());
+
+use Silex\Provider\FormServiceProvider;
+use Symfony\Component\Security\Csrf\CsrfToken;
+
+$app->register(new FormServiceProvider());
+
+
+$app->before(function (\Symfony\Component\HttpFoundation\Request $request) use ($app) {
+
+    if ($request->getMethod()=='POST' || $request->getMethod()=='PUT' || $request->getMethod()=='DELETE') {
+        if (isset($_POST['_csrf_token'])) {
+
+            $token = $_POST['_csrf_token'];
+            $csrf_token = new CsrfToken('token', $token);
+            $csrf_token_ok = $app['csrf.token_manager']->isTokenValid($csrf_token);
+            if (!$csrf_token_ok) {
+                $erreurs["csrf"] = "Erreur : token : " . $token;
+                return $app->redirect($app["url_generator"]->generate("index.errorCsrf"));
+            }
+        }
+    }
+
 
 });
 
