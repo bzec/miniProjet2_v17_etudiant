@@ -1,6 +1,6 @@
 {% extends "layout.html.twig" %}
 {% block contenu %}
-<form method="post" action="{{ path('produit.validFormAddProduit') }}">
+<form method="post" action="{{ path('produit.validFormAddProduit') }}" enctype="multipart/form-data">
     <fieldset>
         <legend>Creer un produit (twig)</legend>
     <div class="form-group">
@@ -49,7 +49,8 @@
         <div class="form-group">
         <div class="col-md-6 mb-3">
             <label for="validPhoto">Photo :</label>
-            <input name="photo" type="text" class="form-control is-valid" id="validPhoto" placeholder="photo" value="{{donnees.photo|default('')}}" required>
+            <input name="photo" type="file" class="form-control is-valid" id="validPhoto" placeholder="photo" value="{{donnees.photo|default('')}}" required>
+            <input type="hidden" name="maxsize" value="123456778" />
             {% if erreurs.photo is defined %}
                 <small class="error">{{erreurs.photo}}</small>
             {% endif %}

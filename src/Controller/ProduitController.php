@@ -60,7 +60,7 @@ class ProduitController implements ControllerProviderInterface
     public function validFormAddProduit(Application $app, Request $req)
     {
 
-        if (isset($_POST['nom']) && isset($_POST['typeProduit_id']) and isset($_POST['nom']) and isset($_POST['photo'])) {
+        if (isset($_POST['nom']) && isset($_POST['typeProduit_id']) and isset($_POST['prix'])) {
             $donnees = [
                 'nom' => htmlspecialchars($_POST['nom']),                    // echapper les entrées
                 'typeProduit_id' => htmlspecialchars($req->get('typeProduit_id')),
@@ -70,7 +70,23 @@ class ProduitController implements ControllerProviderInterface
             if ((! preg_match("/^[A-Za-z ]{2,}/",$donnees['nom']))) $erreurs['nom']='nom composé de 2 lettres minimum';
             if(! is_numeric($donnees['typeProduit_id']))$erreurs['typeProduit_id']='veuillez saisir une valeur';
             if(! is_numeric($donnees['prix']))$erreurs['prix']='saisir une valeur numérique';
-            if (! preg_match("/[A-Za-z0-9]{2,}.(jpeg|jpg|png)/",$donnees['photo'])) $erreurs['photo']='nom de fichier incorrect (extension jpeg , jpg ou png)';
+           // if (! preg_match("/[A-Za-z0-9]{2,}.(jpeg|jpg|png)/",$donnees['photo'])) $erreurs['photo']='nom de fichier incorrect (extension jpeg , jpg ou png)';
+
+            $_FILES['photo']['name'];     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_photo.png).
+
+            $_FILES['photo']['type'];     //Le type du fichier. Par exemple, cela peut être « image/png ».
+
+            $_FILES['photo']['size'];     //La taille du fichier en octets.
+
+            $_FILES['photo']['tmp_name']; //L'adresse vers le fichier uploadé dans le répertoire temporaire.
+
+            $_FILES['photo']['error'];    //Le code d'erreur, qui permet de savoir si le fichier a bien été uploadé.
+
+            if ($_FILES['photo']['error'] > 0) $erreurs['image'] = "Erreur lors du transfert";
+            if ($_FILES['photo']['size'] > $_POST['maxsize']) $erreurs['image'] = "Le fichier est trop gros";
+            $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+            $extension_upload = strtolower(  substr(  strrchr($_FILES['photo']['name'], '.')  ,1)  );
+            if ( !in_array($extension_upload,$extensions_valides) ) $erreurs['image'] = "Extension incorrect : il faut soit jpg, jpeg, gif, png";
 
             if(! empty($erreurs))
             {
@@ -81,7 +97,10 @@ class ProduitController implements ControllerProviderInterface
             else
             {
                 $this->produitModel = new ProduitModel($app);
+                $nom = "../public/images/{$donnees['nom']}.{$extension_upload}";
+                $donnees['photo'] = "{$donnees['nom']}.{$extension_upload}";
                 $this->produitModel->insertProduit($donnees);
+                move_uploaded_file($_FILES['photo']['tmp_name'],$nom);
                 return $app->redirect($app["url_generator"]->generate("produit.index"));
             }
 

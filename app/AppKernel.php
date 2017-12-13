@@ -108,7 +108,6 @@ $app->before(function (\Symfony\Component\HttpFoundation\Request $request) use (
         }
     }
 
-
 });
 
 //On lance l'application
